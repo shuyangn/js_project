@@ -11,7 +11,7 @@ This project is a data visualization demo that shows the pattern of each country
 
 # Wireframes
 
-Leftside has a global map. Rightside has some charts to show the data of a country.
+![alt text](draft.png "Title")
 
 # Technologies, Libraries, APIs
 
