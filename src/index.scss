@@ -1,5 +1,18 @@
-@import "./styles/example.scss";
+body {
+    margin: 0px;
+    overflow: hidden;
 
-#main {
-    color: $color
 }
+
+.country {
+    fill: #7ea2d6;
+    stroke: #C3D6F0;
+    stroke-opacity: 0.3;
+}
+
+.country:hover {
+    fill: #094594;    //深色系
+    //fill: #CBDFFA;  //浅色系
+}
+
+

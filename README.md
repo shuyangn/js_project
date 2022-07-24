@@ -1,4 +1,4 @@
-## js_project
+## world_gdp
 # Background
 Gross domestic product (GDP) is a monetary measure of the market value of all the final goods and services produced in a specific time period by countries. GDP is often used as a metric for international comparisons as well as a broad measure of economic progress. It is often considered to be the "world's most powerful statistical indicator of national development and progress".
 
