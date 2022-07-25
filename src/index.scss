@@ -1,18 +1,20 @@
+@import url(styles/reset.css);
+@import url(styles/map.scss);
+
 body {
     margin: 0px;
     overflow: hidden;
-
 }
 
-.country {
-    fill: #7ea2d6;
-    stroke: #C3D6F0;
-    stroke-opacity: 0.3;
+.bar {
+    fill:#FFB638;
+}
+.bar:hover {
+    fill: #EBFAAF;
 }
 
-.country:hover {
-    fill: #094594;    //深色系
-    //fill: #CBDFFA;  //浅色系
-}
 
+#map{
+    height:400px;
+}
 
