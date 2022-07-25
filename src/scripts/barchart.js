@@ -12,7 +12,8 @@ var salesData = [
 ];
 
 var svg = d3.select("#svg2");
-var padding = {top:50, right:1000, bottom:18, left:50};
+// svg.scale(199);
+var padding = {top:50, right:0, bottom:18, left:50};
 
 var chartArea = {
     "width":parseInt(svg.style("width"))-padding.left - padding.right,

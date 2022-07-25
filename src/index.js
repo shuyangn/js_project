@@ -1,9 +1,9 @@
 import generateMap from "./scripts/map";
-import getGDP from "./scripts/data";
+import getdata from "./scripts/data";
 
 document.addEventListener("DOMContentLoaded", () => {
     generateMap();
-    getGDP()
+    getdata()
     .then(gdp => {
         console.log(gdp, 'we got the gdp back');
     })

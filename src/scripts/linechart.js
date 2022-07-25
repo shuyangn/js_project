@@ -11,8 +11,8 @@ var salesData = [
     {year:'2021',Qty:5},
 ];
 
-var svg = d3.select("#svg2");
-var padding = {top:50, right:1000, bottom:18, left:50};
+var svg = d3.select("#svg3");
+var padding = {top:50, right:0, bottom:18, left:50};
 
 var chartArea = {
     "width":parseInt(svg.style("width"))-padding.left - padding.right,
@@ -41,13 +41,3 @@ var yAxis = svg.append('g')
 yAxisFn(yAxis);
 
 
-//bar
-svg.append("path")
-      .datum(salesData)
-      .attr("fill", "none")
-      .attr("stroke", "steelblue")
-      .attr("stroke-width", 1.5)
-      .attr("d", d3.line()
-        .x(function(d) { return x(d.year) })
-        .y(function(d) { return y(d.Qty) })
-        )

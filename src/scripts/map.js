@@ -7,14 +7,14 @@ function generateMap() {
     const width = +svg.attr('width');
     const height = +svg.attr('height');
 
-    const projection = d3.geoMercator();
+    const projection = d3.geoMercator().scale(150).translate([300,250]);
     const pathGenerator = d3.geoPath().projection(projection);
 
     const g = svg.append('g');
 
 
     // zoom
-    svg.call(d3.zoom()
+    svg.call(d3.zoom().scaleExtent([0.8,5])
         .on("zoom", zoomed));
 
     function zoomed({transform}) {

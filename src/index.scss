@@ -18,3 +18,16 @@ body {
     height:400px;
 }
 
+.all_pics {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+
+.all_charts {
+    flex-direction: column;
+}
+#svg1 {
+    margin-left: -100px;
+    
+}
