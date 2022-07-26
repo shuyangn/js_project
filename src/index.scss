@@ -3,7 +3,9 @@
 
 body {
     margin: 0px;
-    overflow: hidden;
+    //overflow: hidden;
+    overflow-x: auto;
+    overflow-y: auto;
 }
 
 .bar {
@@ -20,14 +22,13 @@ body {
 
 .all_pics {
     display: flex;
-    justify-content: space-evenly;
+   //justify-content: space-evenly;
     margin-top: 50px;
 }
 
 .all_charts {
     flex-direction: column;
 }
-#svg1 {
-    margin-left: -100px;
-    
-}
+// #svg1 {
+//     margin-left: 0px;
+// }

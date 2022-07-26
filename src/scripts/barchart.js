@@ -11,6 +11,7 @@ var salesData = [
     {year:'2021',Qty:5},
 ];
 
+
 var svg = d3.select("#svg2");
 // svg.scale(199);
 var padding = {top:50, right:0, bottom:18, left:50};
@@ -62,7 +63,7 @@ rectGrp.selectAll('rect').data(salesData).enter()
        .attr('class','bar');
 rectGrp.append('text')
        .attr('y',-20)
-       .attr('x', 180)
+       .attr('x', 110)
        .text('GDP (current us$)');
 
 
