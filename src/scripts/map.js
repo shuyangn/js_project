@@ -28,6 +28,7 @@ function generateMap() {
         d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
     ]).then(([tsvData, topoJSONdata]) => {
         const countries = topojson.feature(topoJSONdata, topoJSONdata.objects.countries);
+        console.log(countries)
         const countryName = {};
         tsvData.forEach(ele => {
             countryName[ele.iso_n3] = ele.name;   //id is 'iso3', title is 'name'

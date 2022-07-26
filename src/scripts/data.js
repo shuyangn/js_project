@@ -37,14 +37,12 @@ async function getGDPPerCapita(gdp_per_capita_url = 'https://api.worldbank.org/v
 
 async function getData() {
     const data = {};
-    data['gdp'] = getGDP();
-    data['gdp_growth'] = getGDPGrowth();
-    data['pop_growth'] = getPopulationGrowth();
-    data['gdp_per_capita'] = getGDPPerCapita();
+    data['gdp'] = await getGDP();
+    data['gdp_growth'] = await getGDPGrowth();
+    data['pop_growth'] = await getPopulationGrowth();
+    data['gdp_per_capita'] = await getGDPPerCapita();
+    // return await data;
     return data;
 }
 
 export default getData;
-
-// invoking our getData funciton
-

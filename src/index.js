@@ -1,25 +1,22 @@
 import generateMap from "./scripts/map";
-import getdata from "./scripts/data";
+import getData from "./scripts/data";
+import generateBarChart from './scripts/barchart';
+import generateLineChart from './scripts/linechart';
+
 
 document.addEventListener("DOMContentLoaded", () => {
+    var whole_data;
+    // console.log(whole_data);
+    getData()
+        .then((data) => {
+            whole_data = data;//console.log(data);
+            
+        });
+    console.log(whole_data);
     generateMap();
-    getdata()
-    .then(gdp => {
-        console.log(gdp, 'we got the gdp back');
-    })
-    .catch(error => {
-        console.error('There has been a problem with your fetch operation: ', error);
-    }
-    );
-
-    // getGDPGrowth()
-    // .then(gdp_growth => {
-    //     console.log(gdp_growth, 'we got the gdp_growth back');
-    // })
-    // .catch(error => {
-    //     console.error('There has been a problem with your fetch operation: ', error);
-    // }
-    // );
+    generateBarChart();
+    generateLineChart();
+    
 });
 
 
