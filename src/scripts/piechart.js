@@ -13,7 +13,7 @@ var svg = d3.select("#svg4")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
 // Create dummy data
-var data = {a: 9, b: 20, c:30, d:8, e:12};
+var data111 = {a: 9, b: 20, c:30, d:8, e:12};
 
 // set the color scale
 var color = d3.scaleOrdinal()
@@ -23,7 +23,7 @@ var color = d3.scaleOrdinal()
 var pie = d3.pie()
 .value(function(d) {return d[1]});
 
-var data_ready = pie(Object.entries(data));
+var data_ready = pie(Object.entries(data111));
 // // shape helper to build arcs:
 var arcGenerator = d3.arc()
   .innerRadius(0)

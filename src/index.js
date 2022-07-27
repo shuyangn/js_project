@@ -5,17 +5,22 @@ import generateLineChart from './scripts/linechart';
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    var whole_data;
-    // console.log(whole_data);
     getData()
         .then((data) => {
-            whole_data = data;//console.log(data);
             
+            generateMap(data);   //data.gdp[1]   all gdp elements
+
+            // const claire = [];
+            // data.gdp[1].forEach(ele => {
+            //     if (ele.countryiso3code === 'AFE'){
+            //         claire.push(ele.value);
+            //     }
+            // });
+
+            //generateBarChart(data.gdp[1],);
+            //generateLineChart();
         });
-    console.log(whole_data);
-    generateMap();
-    generateBarChart();
-    generateLineChart();
+   
     
 });
 

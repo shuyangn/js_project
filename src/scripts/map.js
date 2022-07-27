@@ -2,7 +2,9 @@
 // import {select, json, geoPath, geoMercator, tsv, zoom, event} from 'd3';
 // import { feature } from 'topojson';
 
-function generateMap() {
+import generateBarChart from "./barchart";
+import generateLineChart from "./linechart";
+function generateMap(data) {
     const svg = d3.select('#svg1');
     const width = +svg.attr('width');
     const height = +svg.attr('height');
@@ -28,9 +30,10 @@ function generateMap() {
         d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
     ]).then(([tsvData, topoJSONdata]) => {
         const countries = topojson.feature(topoJSONdata, topoJSONdata.objects.countries);
-        console.log(countries)
         const countryName = {};
+        const countryISO3 = [];
         tsvData.forEach(ele => {
+            countryISO3[ele.iso_n3] = ele.adm0_a3;// countryISO3[ele.iso_n3] = ele.adm0_a3;
             countryName[ele.iso_n3] = ele.name;   //id is 'iso3', title is 'name'
         });
 
@@ -42,6 +45,34 @@ function generateMap() {
         .attr('d', d => pathGenerator(d))
         .append('title')
         .text(ele => countryName[ele.id]);
+
+
+        // const claire = [];                                         // only 167/177 can match
+        // countryISO3.forEach((countrycode) => {
+        //     data.gdp[1].forEach(ele => {
+        //         if (ele.countryiso3code === countrycode){
+        //             claire.push(countrycode);
+        //         }
+        //     });
+
+        // });
+        // // debugger;
+
+         //console.log(d3.selectAll('.country')._groups[0][1]);//.__data__.id
+        d3.selectAll('.country')._groups[0].forEach(ele => {
+            ele.addEventListener("click", () => {
+                
+                //alert(countryISO3[ele.__data__.id]);
+            
+                generateBarChart(data.gdp[1],countryISO3[ele.__data__.id]);
+                generateLineChart(data.gdp_growth[1],countryISO3[ele.__data__.id]);
+            })
+        })
+
+
+            // .__data__
+            // .properties.name
+
     });
 }
 

@@ -1,16 +1,14 @@
-function generateBarChart() {
-    var salesData = [
-        {year:'2012',Qty:12},
-        {year:'2013',Qty:14},
-        {year:'2014',Qty:16},
-        {year:'2015',Qty:20},
-        {year:'2016',Qty:25},
-        {year:'2017',Qty:30},
-        {year:'2018',Qty:20},
-        {year:'2019',Qty:14},
-        {year:'2020',Qty:9},
-        {year:'2021',Qty:5},
-    ];
+function generateBarChart(draw_data, draw_id) {
+    var barData = [];
+            draw_data.forEach(ele => {
+            if (ele.countryiso3code === draw_id){
+                let temp = {};
+                temp.year = ele.date;
+                temp.Qty = ele.value / 1000000000000;
+                barData.push(temp);
+            }
+            });
+    console.log(barData)
 
 
     var svg = d3.select("#svg2");
@@ -23,10 +21,10 @@ function generateBarChart() {
     };
 
     var yScale = d3.scaleLinear()
-                .domain([0, d3.max(salesData, function(d,i){return d.Qty})])
+                .domain([0, d3.max(barData, function(d,i){return d.Qty})])
                 .range([chartArea.height, 0]).nice();
     var xScale = d3.scaleBand()
-                .domain(salesData.map(function(d){return d.year}))
+                .domain(barData.map(function(d){return d.year}))
                 .range([0, chartArea.width]).padding(.2);
     var xAxis = svg.append('g')
                 .classed('XAxis', true)
@@ -44,12 +42,13 @@ function generateBarChart() {
     yAxisFn(yAxis);
 
 
+
     //bar
     var rectGrp = svg.append('g').attr(
         'transform', 'translate('+padding.left+','+padding.top+')'
     );
 
-    rectGrp.selectAll('rect').data(salesData).enter()
+    rectGrp.selectAll('rect').data(barData).enter()
         .append('rect')
         .attr('width',xScale.bandwidth())
         .attr('height', function(d,i){
@@ -64,8 +63,9 @@ function generateBarChart() {
         .attr('class','bar');
     rectGrp.append('text')
         .attr('y',-20)
-        .attr('x', 110)
-        .text('GDP (current us$)');
+        .attr('x', 50)
+        .text('GDP (current us$)(trillion)');
+        
 }
 
 
