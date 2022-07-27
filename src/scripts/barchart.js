@@ -8,8 +8,8 @@ function generateBarChart(draw_data, draw_id) {
                 barData.push(temp);
             }
             });
-    console.log(barData)
 
+    barData.reverse();
 
     var svg = d3.select("#svg2");
     // svg.scale(199);
@@ -52,20 +52,53 @@ function generateBarChart(draw_data, draw_id) {
         .append('rect')
         .attr('width',xScale.bandwidth())
         .attr('height', function(d,i){
-            return chartArea.height-yScale(d.Qty);
+            return chartArea.height-yScale(0);
         })
         .attr('x', function(d,i){
             return xScale(d.year);
         })
         .attr('y', function(d,i){
-            return yScale(d.Qty);
+            return yScale(0);
         })
         .attr('class','bar');
+
+
+    rectGrp.selectAll("rect")
+        .transition()
+        .duration(800)
+        .attr("y", function(d) { return yScale(d.Qty); })
+        .attr("height", function(d) { return chartArea.height - yScale(d.Qty); })
+       // .delay(function(d,i){console.log(i) ; return(i*100)})
+       .delay(function(d,i){return(i*100)})
+
+
+
     rectGrp.append('text')
-        .attr('y',-20)
-        .attr('x', 50)
-        .text('GDP (current us$)(trillion)');
-        
+       .attr('y',-20)
+       .attr('x', 50)
+       .text('GDP (current us$)(trillion)');
+
+
+
+    var barblocks = document.getElementsByClassName("bar");
+    //debugger
+
+    for (let i = 0; i < barblocks.length; i++){
+    let barblock = barblocks[i];
+    barblock.addEventListener("mouseover", () => {
+        let value = barblock.__data__.Qty.toFixed(2);
+        let fullMessage = (value.toLocaleString() + "%");
+        let domEle = document.getElementById("hover-tooltip");
+        domEle.innerText = fullMessage;
+        domEle.style.opacity = 1;
+        })
+    };
+
+    // barblock.addEventListener("mouseleave", e => {
+    //     document.getElementById("hover-tooltip").innerHTML = "";
+    //     document.getElementById("hover-tooltip").style.opacity = 0;
+    // })
+    // }
 }
 
 

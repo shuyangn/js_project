@@ -56,8 +56,7 @@ function generateMap(data) {
         //     });
 
         // });
-        // // debugger;
-
+        //debugger;
          //console.log(d3.selectAll('.country')._groups[0][1]);//.__data__.id
         d3.selectAll('.country')._groups[0].forEach(ele => {
             ele.addEventListener("click", () => {
@@ -65,7 +64,7 @@ function generateMap(data) {
                 //alert(countryISO3[ele.__data__.id]);
             
                 generateBarChart(data.gdp[1],countryISO3[ele.__data__.id]);
-                generateLineChart(data.gdp_growth[1],countryISO3[ele.__data__.id]);
+                generateLineChart(data.gdp_growth[1],countryISO3[ele.__data__.id]);  //.concat(data.pop_growth[1])
             })
         })
 

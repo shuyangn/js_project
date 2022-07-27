@@ -79,6 +79,10 @@ body {
   fill: #EBFAAF;
 }
 
+.lol-circle:hover {
+  fill: black;
+}
+
 #map {
   height: 400px;
 }
