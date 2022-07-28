@@ -60,10 +60,10 @@ function generateMap(data) {
          //console.log(d3.selectAll('.country')._groups[0][1]);//.__data__.id
         d3.selectAll('.country')._groups[0].forEach(ele => {
             ele.addEventListener("click", () => {
-                d3.selectAll('#svg2').remove();
-                d3.select('body').append('svg').attr('width', 500).attr('height', 300).attr('id', 'svg2');
-                d3.selectAll('#svg3').remove();
-                d3.select('body').append('svg').attr('width', 500).attr('height', 300).attr('id', 'svg3');
+                d3.selectAll('#pic1').remove();
+                d3.select('body').select('div.charts').append('div').attr('width', 500).attr('height', 300).attr('id', 'pic1');
+                d3.selectAll('#pic2').remove();
+                d3.select('body').select('div.charts').append('div').attr('width', 500).attr('height', 300).attr('id', 'pic2');
                 
                 //alert(countryISO3[ele.__data__.id]);
             

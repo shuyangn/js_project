@@ -7,7 +7,8 @@ var width = 500,
 var radius = Math.min(width, height) / 2 - margin;
 
 // append the svg object to the div called 'my_dataviz'
-var svg = d3.select("#svg2")
+var svg = d3.select("#pic1")
+    .append("svg")
     .attr("width", width)
     .attr("height", height)
   .append("g")
@@ -37,7 +38,7 @@ svg
   .join('path')
   .attr('d', arcGenerator)
   .attr('fill', function(d){ return(color(d.data[1])) })
-  .attr("stroke", "black")
+  .attr("stroke", "white")
   .style("stroke-width", "2px")
   .style("opacity", 0.7)
 

@@ -13,7 +13,8 @@ function generateLollipop(draw_data){
     var margin = {top: 50, right: 25, bottom: 18, left: 100},
             width = 500 - margin.left - margin.right,
             height = 330 - margin.top - margin.bottom;
-    var svg = d3.select("#svg3")
+    var svg = d3.select("#pic2")
+                    .append("svg")
                     .attr("width", width + margin.left + margin.right)
                     .attr("height", height + margin.top + margin.bottom)
                     .append("g")

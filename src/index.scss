@@ -29,17 +29,15 @@ body {
 }
 
 
-.graphs-container {
+#graphs-container {
     display: flex;
 }
 
 
 .charts {
-    flex-direction: row;
+    flex-direction: column;
 }
-// #svg1 {
-//     margin-left: 0px;
-// }
+
 
 #nav-bar {
     font-size:37px;
