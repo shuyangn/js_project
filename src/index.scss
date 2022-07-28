@@ -1,11 +1,20 @@
 @import url(styles/reset.css);
 @import url(styles/map.scss);
 
+// body {
+//     margin: 0px;
+//     //overflow: hidden;
+//     overflow-x: auto;
+//     overflow-y: auto;
+    
+// }
+
 body {
-    margin: 0px;
-    //overflow: hidden;
-    overflow-x: auto;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background-color: #f7f7f7; 
 }
 
 .bar {
@@ -19,20 +28,52 @@ body {
     fill: black;
 }
 
-#map{
-    height:400px;
-}
 
-.all_pics {
+.graphs-container {
     display: flex;
-   //justify-content: space-evenly;
-    margin-top: 50px;
 }
 
-.all_charts {
-    flex-direction: column;
+
+.charts {
+    flex-direction: row;
 }
 // #svg1 {
 //     margin-left: 0px;
 // }
+
+#nav-bar {
+    font-size:37px;
+    justify-content: flex-end;
+
+}
+#nav-bar i{
+    color:black;
+    padding: 4px 6px 4px 7px;
+    //margin: 5px 5px;
+    border-radius: 5px;
+    width: 33px;
+    background-color: #f7f7f7;
+}
+#github{
+    position:absolute;
+    right: 20px;
+    top:10px;
+}
+
+#linkedin{
+    position:absolute;
+    right: 70px;
+    top:10px;
+}
+
+#nav-bar i:hover{
+    box-shadow: 0 0 15px #969696;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 5px 0;
+    margin-top: 20px;
+}
 

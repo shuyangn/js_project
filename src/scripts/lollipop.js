@@ -10,10 +10,10 @@ function generateLollipop(draw_data){
             }
             });
 
-    var margin = {top: 50, right: 25, bottom: 18, left: 25},
-            width = 450 - margin.left - margin.right,
-            height = 400 - margin.top - margin.bottom;
-    var svg = d3.select("#svg4")
+    var margin = {top: 50, right: 25, bottom: 18, left: 100},
+            width = 500 - margin.left - margin.right,
+            height = 330 - margin.top - margin.bottom;
+    var svg = d3.select("#svg3")
                     .attr("width", width + margin.left + margin.right)
                     .attr("height", height + margin.top + margin.bottom)
                     .append("g")
@@ -77,7 +77,7 @@ function generateLollipop(draw_data){
     
     svg.append('text')
         .attr('y',-20)
-        .attr('x', 45)
+        .attr('x', 26)
         .text('World GDP Ranking 2021 TOP 15 ($trillion)')
         .style('font-size', 15)
         .style('font-weight', 900)

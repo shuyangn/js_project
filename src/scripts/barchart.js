@@ -12,7 +12,6 @@ function generateBarChart(draw_data, draw_id) {
     barData.reverse();
 
     var svg = d3.select("#svg2");
-    // svg.scale(199);
     var padding = {top:50, right:0, bottom:18, left:50};
 
     var chartArea = {
@@ -27,7 +26,7 @@ function generateBarChart(draw_data, draw_id) {
                 .domain(barData.map(function(d){return d.year}))
                 .range([0, chartArea.width]).padding(.2);
     var xAxis = svg.append('g')
-                .classed('XAxis', true)
+                .classed('xAxis', true)
                 .attr(
                     'transform', 'translate('+padding.left+','+(chartArea.height+padding.top)+')'
                 )
@@ -40,6 +39,40 @@ function generateBarChart(draw_data, draw_id) {
                     'transform', 'translate('+padding.left+','+padding.top+')'
                 );
     yAxisFn(yAxis);
+
+
+    // //hover information
+    // var tooltip = d3.select("#svg2")
+    // .append("div")
+    // .style("opacity", 0)
+    // .attr("class", "tooltip")
+    // .style("background-color", "white")
+    // .style("border", "solid")
+    // .style("border-width", "1px")
+    // .style("border-radius", "5px")
+    // .style("padding", "10px")
+
+    // // Three function that change the tooltip when user hover / move / leave a cell
+    // var mouseover = function(d) {
+    //     Tooltip
+    //       .style("opacity", 1)
+    //     d3.select(this)
+    //       .style("stroke", "black")
+    //       .style("opacity", 1)
+    //   }
+    //   var mousemove = function(d) {
+    //     Tooltip
+    //       .html("The exact value of<br>this cell is: " + d.Qty)
+    //       .style("left", (d3.mouse(this)[0]+70) + "px")
+    //       .style("top", (d3.mouse(this)[1]) + "px")
+    //   }
+    //   var mouseleave = function(d) {
+    //     Tooltip
+    //       .style("opacity", 0)
+    //     d3.select(this)
+    //       .style("stroke", "none")
+    //       .style("opacity", 0.8)
+    //   }
 
 
 
@@ -61,6 +94,10 @@ function generateBarChart(draw_data, draw_id) {
             return yScale(0);
         })
         .attr('class','bar');
+        // .on("mouseover", mouseover)
+        // .on("mousemove", mousemove)
+        // .on("mouseleave", mouseleave)
+        
 
 
     rectGrp.selectAll("rect")
@@ -77,28 +114,9 @@ function generateBarChart(draw_data, draw_id) {
        .attr('y',-20)
        .attr('x', 50)
        .text('GDP (current us$)(trillion)');
+    
 
 
-
-    var barblocks = document.getElementsByClassName("bar");
-    //debugger
-
-    for (let i = 0; i < barblocks.length; i++){
-    let barblock = barblocks[i];
-    barblock.addEventListener("mouseover", () => {
-        let value = barblock.__data__.Qty.toFixed(2);
-        let fullMessage = (value.toLocaleString() + "%");
-        let domEle = document.getElementById("hover-tooltip");
-        domEle.innerText = fullMessage;
-        domEle.style.opacity = 1;
-        })
-    };
-
-    // barblock.addEventListener("mouseleave", e => {
-    //     document.getElementById("hover-tooltip").innerHTML = "";
-    //     document.getElementById("hover-tooltip").style.opacity = 0;
-    // })
-    // }
 }
 
 

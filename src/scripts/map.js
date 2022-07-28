@@ -9,14 +9,14 @@ function generateMap(data) {
     const width = +svg.attr('width');
     const height = +svg.attr('height');
 
-    const projection = d3.geoMercator().scale(150).translate([300,250]);
+    const projection = d3.geoMercator().scale(140).translate([370,260]);
     const pathGenerator = d3.geoPath().projection(projection);
 
     const g = svg.append('g');
 
 
     // zoom
-    svg.call(d3.zoom().scaleExtent([0.8,5])
+    svg.call(d3.zoom().scaleExtent([1,5])
         .on("zoom", zoomed));
 
     function zoomed({transform}) {
@@ -60,6 +60,10 @@ function generateMap(data) {
          //console.log(d3.selectAll('.country')._groups[0][1]);//.__data__.id
         d3.selectAll('.country')._groups[0].forEach(ele => {
             ele.addEventListener("click", () => {
+                d3.selectAll('#svg2').remove();
+                d3.select('body').append('svg').attr('width', 500).attr('height', 300).attr('id', 'svg2');
+                d3.selectAll('#svg3').remove();
+                d3.select('body').append('svg').attr('width', 500).attr('height', 300).attr('id', 'svg3');
                 
                 //alert(countryISO3[ele.__data__.id]);
             

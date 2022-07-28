@@ -81,14 +81,14 @@ function generateLineChart(draw_data, draw_id) {
         // Create the X axis:
         x.domain([d3.min(data, function(d){return d.year;}), d3.max(data, function(d){return d.year;})])  //d3.extent(lineData, function(d) { return d.year; })
         svg.selectAll(".xxAxis").transition()
-          .duration(3000)
+          //.duration(3000)
           .call(xAxis);
       
         // create the Y axis
         y.domain([d3.min(lineData, function(d){return d.Qty;})-5, d3.max(lineData, function(d){return d.Qty;})+5])
         svg.selectAll(".yyAxis")
-          .transition()
-          .duration(3000)
+          //.transition()
+          //.duration(3000)
           .call(yAxis);
       
         // Create a update selection: bind to the new data
@@ -102,7 +102,7 @@ function generateLineChart(draw_data, draw_id) {
           .attr("class","lineTest")
           .merge(u)
           .transition()
-          .duration(3000)
+          .duration(800)
           .attr("d", d3.line()
             .x(function(d) { return x(d.year); })
             .y(function(d) { return y(d.Qty); }))
