@@ -14,6 +14,9 @@ function generateBarChart(draw_data, draw_id) {
     barData.reverse();
 
     var svg = d3.select("#pic1").append("svg");
+    svg
+      .attr("width", 500)
+      .attr("height", 300)
     var padding = {top:50, right:0, bottom:18, left:50};
 
     var chartArea = {

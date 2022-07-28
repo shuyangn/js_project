@@ -5,9 +5,11 @@
 import generateBarChart from "./barchart";
 import generateLineChart from "./linechart";
 function generateMap(data) {
-    const svg = d3.select('#svg1');
-    const width = +svg.attr('width');
-    const height = +svg.attr('height');
+     const svg = d3.select('div.map').append('svg');
+     svg
+      .attr("width", 800)
+      .attr("height", 500)
+;
 
     const projection = d3.geoMercator().scale(140).translate([370,260]);
     const pathGenerator = d3.geoPath().projection(projection);

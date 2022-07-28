@@ -19,19 +19,20 @@ var data111 = {"United States": 24.67, "China":17.39, "Japan":5.97,"Germany":4.5
 
 // set the color scale
 var color = d3.scaleOrdinal()
-  .range(["#88e3d1", "#d1e6a8", "#fddd9e", "#f5897c", "#cbaddb"]);
+  .range(["#88e3d1", "#d1e6a8","#fc7419", "#fddd9e",  "#cbaddb","#768cce","#ffc6d0","#e9d3a8","#f17173","#f5897c"]);
 
 // Compute the position of each group on the pie:
 var pie = d3.pie()
 .value(function(d) {return d[1]});
 
 var data_ready = pie(Object.entries(data111));
-// // shape helper to build arcs:
+// shape helper to build arcs
 var arcGenerator = d3.arc()
   .innerRadius(80)
   .outerRadius(radius)
 
-// Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
+
+// Build the pie chart
 svg
   .selectAll('slices')
   .data(data_ready)
@@ -52,6 +53,17 @@ svg
   .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
   .style("text-anchor", "middle")
   .style("font-size", 10)
+
+  var svg2 = d3.select("#pic1")
+           .append("svg")
+           .attr("width", 50)
+           .attr("height", 200)
+           svg.append("circle").attr("cx",200).attr("cy",130).attr("r", 6).style("fill", "#88e3d1")
+           svg.append("circle").attr("cx",200).attr("cy",160).attr("r", 6).style("fill", "#404080")
+           svg.append("text").attr("x", 220).attr("y", 130).text("United States").style("font-size", "15px").attr("alignment-baseline","middle")
+           svg.append("text").attr("x", 220).attr("y", 160).text("variable B").style("font-size", "15px").attr("alignment-baseline","middle")
+
+
 }
 
 export default generatePieChart;
