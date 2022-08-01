@@ -1,6 +1,8 @@
 
 // import {select, json, geoPath, geoMercator, tsv, zoom, event} from 'd3';
 // import { feature } from 'topojson';
+import generateLollipop from './lollipop';
+import generatePieChart from './piechart';
 
 import generateBarChart from "./barchart";
 import generateLineChart from "./linechart";
@@ -68,17 +70,31 @@ function generateMap(data) {
                 d3.select('body').select('div.charts').append('div').attr('width', 500).attr('height', 300).attr('id', 'pic2');
                 
                 //alert(countryISO3[ele.__data__.id]);
-            
+                const worldDataButton = document.getElementById('world-data');
+                worldDataButton.style.opacity = 1;
+                worldDataButton.style.visibility = 'visible';
                 generateBarChart(data.gdp[1],countryISO3[ele.__data__.id]);
                 generateLineChart(data.gdp_growth[1],countryISO3[ele.__data__.id]);  //.concat(data.pop_growth[1])
             })
         })
 
 
-            // .__data__
-            // .properties.name
 
     });
+
+    document.getElementById('world-data').addEventListener('click', e => {
+        d3.selectAll('#pic1').remove();
+        d3.select('body').select('div.charts').append('div').attr('width', 500).attr('height', 300).attr('id', 'pic1');
+        d3.selectAll('#pic2').remove();
+        d3.select('body').select('div.charts').append('div').attr('width', 500).attr('height', 300).attr('id', 'pic2');
+        
+        const worldDataButton = document.getElementById('world-data');
+        // worldDataButton.style.opacity = 0;
+        // worldDataButton.style.visibility = 'hidden';
+
+        generateLollipop(data.gdp[1]);
+        generatePieChart();
+    })
 }
 
 export default generateMap;

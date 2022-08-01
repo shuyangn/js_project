@@ -17,6 +17,7 @@ function generateBarChart(draw_data, draw_id) {
     svg
       .attr("width", 500)
       .attr("height", 300)
+      .attr("class", "all-bars")
     var padding = {top:50, right:0, bottom:18, left:50};
 
     var chartArea = {
@@ -46,36 +47,6 @@ function generateBarChart(draw_data, draw_id) {
     yAxisFn(yAxis);
 
 
-    //hover information
-    var Tooltip = d3.select("#pic1")
-    .append("div")
-    .style("opacity", 0)
-    .attr("class", "tooltip")
-    .style("background-color", "white")
-    .style("border", "solid")
-    .style("border-width", "1px")
-    .style("border-radius", "5px")
-    .style("padding", "10px")
-
-    // Three function that change the tooltip when user hover / move / leave a cell
-    var mouseover = function(d) {
-        var tip_year = d3.select(this)._groups[0][0].__data__.year;
-        var tip_value = d3.select(this)._groups[0][0].__data__.Qty;
-        Tooltip
-        .html("year: " + tip_year + "<br>" + "Value: " + tip_value.toFixed(2) + " trillion$")
-        .style("opacity", 1)
-      }
-      var mousemove = function(d) {
-        Tooltip
-          .style("left", (d3.mouse(this)[0]) + "px")
-          .style("top", (d3.mouse(this)[1]) + "px")
-      }
-      var mouseleave = function(d) {
-        Tooltip
-          .style("opacity", 0)
-      }
-
-
 
     //bar
     var rectGrp = svg.append('g').attr(
@@ -94,10 +65,31 @@ function generateBarChart(draw_data, draw_id) {
         .attr('y', function(d,i){
             return yScale(0);
         })
-        .on("mouseover", mouseover)
-        .on("mousemove", mousemove)
-        .on("mouseleave", mouseleave)
         .attr('class','bar');
+
+
+    const bars = Array.from(document.getElementsByClassName("bar"));
+    bars.forEach(bar => {
+        bar.addEventListener('mouseover', e => {
+            const tip_year = e.target.__data__.year;
+            const tip_value = e.target.__data__.Qty;
+            const message = "year: ".concat(tip_year, "<br>" , "Value: " , tip_value.toFixed(2) , " trillion$");
+            const hoverpos = document.getElementById("hover-tooltip");
+            hoverpos.innerHTML = message;
+            hoverpos.style.opacity = 1;
+        })
+
+        bar.addEventListener("mousemove", e => {
+            document.getElementById("hover-tooltip").style.left = e.pageX + 10 + "px";
+            document.getElementById("hover-tooltip").style.top = e.pageY - 35 + "px";
+        })
+
+
+        bar.addEventListener("mouseleave", e => {
+            document.getElementById("hover-tooltip").innerHTML = "";
+            document.getElementById("hover-tooltip").style.opacity = 0;
+        })
+    })
         
 
 
@@ -115,8 +107,6 @@ function generateBarChart(draw_data, draw_id) {
        .attr('y',-20)
        .attr('x', 50)
        .text(current_country + ' GDP (current us$)(trillion)');
-    
-
 
 }
 

@@ -140,3 +140,39 @@ h1 {
   margin: 5px 0;
   margin-top: 20px;
 }
+
+#hover-tooltip {
+  position: absolute;
+  background-color: white;
+  padding: 4px 10px;
+  border: 1.25px solid rgb(120, 120, 120);
+  border-radius: 5px;
+  opacity: 0;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+#world-data {
+  position: absolute;
+  top: 75px;
+  left: 53%;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: rgba(200, 200, 200, 0.4);
+  font-family: "Volkhov", serif;
+  box-shadow: none;
+  transition: visibility 150ms, opacity 500ms, box-shadow 200ms ease-out;
+}
+
+#world-data:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px rgb(200, 200, 200);
+}
+
+.lineCircle:hover {
+  stroke: white;
+  fill: rgb(20, 133, 246);
+}

@@ -10,41 +10,6 @@ function generateLineChart(draw_data, draw_id) {
                 current_country = ele.country.value;
             }
             });
-//     var lineData = [];
-//             draw_data.forEach(ele => {
-//                 debugger
-//             if (ele.countryiso3code === draw_id){
-//                 if (ele.indicator.id === 'NY.GDP.MKTP.KD.ZG'){
-//                         lineData.filter((ld ,i) => {
-//                                 if (ld.year === ele.year){
-//                                         lineData[i].gdp_val = ele.value;
-//                                 } else {
-//                                         let temp = {};
-//                                         temp.year = ele.date;
-//                                         temp.gdp_val = ele.value;
-//                                         lineData.push(temp);
-//                                 }
-//                         })
-                        
-//                 };
-//                 if (ele.indicator.id === 'SP.POP.GROW'){
-//                         lineData.forEach((ld ,i) => {
-//                                 if (ld.year === ele.year){
-//                                         lineData[i].pop_val = ele.value;
-//                                 } else {
-//                                         let temp = {};
-//                                         temp.year = ele.date;
-//                                         temp.pop_val = ele.value;
-//                                         lineData.push(temp);
-//                                 }
-//                         })
-                        
-//                 };
-                
-//             }
-//             });
-//             debugger
-//             console.log(lineData);
 
 
     var margin = {top: 50, right: 25, bottom: 18, left: 25},
@@ -59,68 +24,76 @@ function generateLineChart(draw_data, draw_id) {
                 .attr("transform","translate(" + margin.left + "," + margin.top + ")");
 
     var x = d3.scaleLinear()
-                .range([0, width]);
-    var xAxis = d3.axisBottom(x);
-
-    svg.append('g')
-    .attr("transform", "translate(0," + height + ")")
-    .attr('class','xxAxis');
-    
+      .domain([d3.min(lineData, function(d){return d.year;}), d3.max(lineData, function(d){return d.year;})])
+      .range([ 0, width ]);
+    svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
 
     var y = d3.scaleLinear()
-            .range([height, 0]);
+      .domain([d3.min(lineData, function(d){return d.Qty;}) - 3, d3.max(lineData, function(d){return d.Qty;}) + 3])
+      .range([ height, 0 ]);
+    svg.append("g")
+      .call(d3.axisLeft(y));
 
-    var yAxis = d3.axisLeft(y);
+    // Add the line
+    svg.append("path")
+    .datum(lineData)
+    .transition()
+    .attr("fill", "none")
+    .attr("stroke", "#69b3a2")
+    .attr("stroke-width", 1.3)
+    .attr("d", d3.line()
+      .x(function(d) { return x(d.year) })
+      .y(function(d) { return y(d.Qty) })
+      )
 
-    svg.append('g')
-       .attr('class','yyAxis');          
+    // Add the points
+    svg
+    .append("g")
+    .selectAll("dot")
+    .data(lineData)
+    .enter()
+    .append("circle")
+      .attr("class", "lineCircle")
+      //.transition()
+      .attr("cx", function(d) { return x(d.year) } )
+      .attr("cy", function(d) { return y(d.Qty) } )
+      .attr("r", 5)
+      .attr("fill", "#69b3a2")
+
+    // add head
+    svg.append('text')
+    .attr('y',-20)
+    .attr('x', 85)
+    .text(current_country + ' GDP growth (annual %)');
 
 
 
 
-    //line
-    function update(data) {
+  const lineCircles = Array.from(document.getElementsByClassName("lineCircle"));
+  lineCircles.forEach(circle => {
+      circle.addEventListener('mouseover', e => {
+        debugger
+          const tip_year = e.target.__data__.year;
+          const tip_value = e.target.__data__.Qty;
+          const message = "year: ".concat(tip_year, "<br>" , "Growth rate: " , tip_value.toFixed(2) , " %");
+          const hoverpos = document.getElementById("hover-tooltip");
+          hoverpos.innerHTML = message;
+          hoverpos.style.opacity = 1;
+      })
 
-        // Create the X axis:
-        x.domain([d3.min(data, function(d){return d.year;}), d3.max(data, function(d){return d.year;})])  //d3.extent(lineData, function(d) { return d.year; })
-        svg.selectAll(".xxAxis").transition()
-          //.duration(3000)
-          .call(xAxis);
-      
-        // create the Y axis
-        y.domain([d3.min(lineData, function(d){return d.Qty;})-5, d3.max(lineData, function(d){return d.Qty;})+5])
-        svg.selectAll(".yyAxis")
-          //.transition()
-          //.duration(3000)
-          .call(yAxis);
-      
-        // Create a update selection: bind to the new data
-        var u = svg.selectAll(".lineTest")
-          .data([data], function(d){ return d.year });
-      
-        // Updata the line
-        u
-          .enter()
-          .append("path")
-          .attr("class","lineTest")
-          .merge(u)
-          .transition()
-          .duration(800)
-          .attr("d", d3.line()
-            .x(function(d) { return x(d.year); })
-            .y(function(d) { return y(d.Qty); }))
-            .attr("fill", "none")
-            .attr("stroke", "steelblue")
-            .attr("stroke-width", 2.5)
-        
-        svg.append('text')
-        .attr('y',-20)
-        .attr('x', 85)
-        .text(current_country + ' GDP growth (annual %)');
-      }
-      
+      circle.addEventListener("mousemove", e => {
+          document.getElementById("hover-tooltip").style.left = e.pageX + 10 + "px";
+          document.getElementById("hover-tooltip").style.top = e.pageY - 35 + "px";
+      })
 
-      update(lineData)
+
+      circle.addEventListener("mouseleave", e => {
+          document.getElementById("hover-tooltip").innerHTML = "";
+          document.getElementById("hover-tooltip").style.opacity = 0;
+      })
+  })
 
 
 
