@@ -24,6 +24,7 @@ body {
 }
 .bar:hover {
     fill: #EBFAAF;
+    transition: 0.2s;
 }
 
 
@@ -154,9 +155,10 @@ h1 {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     left: 10px;
     bottom: 0;
+    margin-top: 1%;
 }
 
 .pie-slice:hover {
-    fill: rgb(255, 242, 55);
+    transition: 0.2s;
     transform: scale(1.05);
 }
