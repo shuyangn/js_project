@@ -12,7 +12,7 @@ function generateLineChart(draw_data, draw_id) {
             });
 
 
-    var margin = {top: 50, right: 25, bottom: 18, left: 25},
+    var margin = {top: 50, right: 0, bottom: 18, left: 0},
         width = 500 - margin.left - margin.right,
         height = 300 - margin.top - margin.bottom;
     ;

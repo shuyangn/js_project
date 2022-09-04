@@ -68,7 +68,6 @@ table {
   margin-top: 70px;
   background-color: white;
   margin-bottom: 10px;
-  margin-right: 60px;
 }
 
 .info-modal {
@@ -174,10 +173,15 @@ body {
 #graphs-container {
   display: flex;
   justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
 }
 
 .charts {
+  display: flex;
   flex-direction: column;
+  width: 500;
+  height: 800;
 }
 
 #nav-bar {
@@ -244,7 +248,7 @@ h1 {
 #world-data {
   position: absolute;
   top: 75px;
-  left: 4%;
+  left: 5%;
   padding: 10px 20px;
   border-radius: 5px;
   border: none;
@@ -268,4 +272,15 @@ h1 {
 
 #country-name-text {
   font-family: "Luckiest Guy";
+}
+
+.footer {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  left: 10px;
+  bottom: 0;
+}
+
+.pie-slice:hover {
+  fill: rgb(255, 242, 55);
+  transform: scale(1.05);
 }

@@ -1,7 +1,7 @@
 function generatePieChart() {
-var width = 400,
+var width = 310,
     height = 300,
-    margin = 30;
+    margin = 20;
 
 // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
 var radius = Math.min(width, height) / 2 - margin;
@@ -42,6 +42,7 @@ svg
   .attr("stroke", "white")
   .style("stroke-width", "2px")
   .style("opacity", 0.7)
+  .attr("class", "pie-slice")
 
 
   //add annotation
@@ -53,6 +54,8 @@ svg
   .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
   .style("text-anchor", "middle")
   .style("font-size", 10)
+  .attr("cursor","default")
+
 
   var svg2 = d3.select("#pic1")
            .append("svg")

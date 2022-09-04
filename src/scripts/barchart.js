@@ -18,7 +18,7 @@ function generateBarChart(draw_data, draw_id) {
       .attr("width", 500)
       .attr("height", 300)
       .attr("class", "all-bars")
-    var padding = {top:50, right:0, bottom:18, left:50};
+    var padding = {top:50, right:0, bottom:18, left:0};
 
     var chartArea = {
         "width":parseInt(svg.style("width"))-padding.left - padding.right,
