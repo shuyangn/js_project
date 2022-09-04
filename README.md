@@ -6,6 +6,7 @@ Gross domestic product (GDP) is a monetary measure of the market value of all th
 
 # Funtionality & MVPs
 1. Users will be able to select different countries on the map.
+![barchart](bar.gif)
 2. Users will be able to see the GDP changes of the whole world.
 3. Users can get some charts of a country's GDP over years or percentage in world.
 

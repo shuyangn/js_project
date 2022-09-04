@@ -7,7 +7,9 @@
 .country:hover {
     fill: #094594;  
     transition: 0.2s;
+    cursor: pointer;
 }
+
 
 .map {
     display: flex;
