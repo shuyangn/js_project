@@ -48,7 +48,8 @@ function generateMap(data) {
         .attr('class','country')
         .attr('d', d => pathGenerator(d))
         .append('title')
-        .text(ele => countryName[ele.id]);
+        .text(ele => countryName[ele.id])
+        .attr('class', 'country-name-text');
 
 
         // const claire = [];                                         // only 167/177 can match

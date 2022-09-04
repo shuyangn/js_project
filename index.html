@@ -6,16 +6,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="shortcut icon" type="image/png" href="https://img.icons8.com/external-bluetone-bomsymbols-/91/000000/external-earth-science-technology-bluetone-bluetone-bomsymbols-.png"/>
-    <!-- https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/64/000000/external-world-ecology-and-energy-xnimrodx-lineal-gradient-xnimrodx.png -->
-    <title>World GDP</title>
+
+    <title>World GDP Visualizer</title>
     <link rel="stylesheet" href="./dist/main.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css">
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://d3js.org/topojson.v1.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
     <script src="./dist/main.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Luckiest Guy' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet'>
+    
+
+
+    
+            <!-- Modal -->
+            <div class="info-modal">
+                <p class="close-info">✖</p>
+                <div class="info-position">
+                    <div class="info-modal-content">
+                        <p class="title">  
+                            World GDP Visualizer 
+                        </p>
+                        <div>
+                            <h2>Description:</h2>
+                            <p>Gross domestic product serves as a barometer for a country's economic health. It measures the total market value of final goods and services produced in a country during a given year.</p>
+                            <p>World GDP visualizer is a tool used to help users visualize the GDP of all the countries in the world. It can intuitively display the changes in GDP and growth trend of each country in the past decade, and help users quickly get the information of the economic trend of that country. 
+                                Users can also see the proportion of some countries in the world's total GDP.</p>
+                            <p >The tool is developed by using <span style="font-weight: bold;">Javascript, World developed Indicators API from world bank, D3.js and D3 Geo.</span></p>
+                        </div>
+
+                        <!-- Map Div -->
+                        <div>
+                            <h2>The Interactive Map:</h2>
+                  
+                            <p>
+                                The interactive map displays all countries in the world. Click on a country will show the GDP trend information of this country in last decade.
+                            </p>
+                        </div>
+
+                        <!-- Chart Div -->
+                        <div>
+                            <h2>Lollipop Chart:</h2>
+                            
+                            <p>
+                                It shows the relationship between a numeric(GDP) and a categoric(country) variable. It is especially useful when we have several bars of the same height: it avoids to have a cluttered figure and a Moiré effect.
+                            </p>
+
+                            <h2>Pie Chart:</h2>
+
+                            <p>
+                                Pie Chart shows the proportion of top 5 countries in the world in 2021. Visually display the proportion in the world's GDP.
+                            </p>
+
+                            <h2 >Bar Chart:</h2>
+                            <p>
+                                This shows the value of GDP in each year for last decade. User can know the economic development of one country.
+                            </p>
+
+                            <h2 >Line Chart:</h2>
+                            <p>
+                                This shows the value of GDP Growth in each year for last decade. User can know the economic development of one country compared to itself.
+                            </p>
+                      </div>
+
+                    </div>
+                </div>
+            </div>
+        
    
     
   </head>
@@ -25,16 +85,19 @@
   <body>
     
     <div id="nav-bar">
+      <i id="info-button" class="fa fa-info-circle"></i>
       <a href="https://github.com/shuyangn/world_gdp" target="'_blank" rel="noopener"><i class="fa fa-github-square" id = 'github'></i></a>
       <a href="https://www.linkedin.com/in/shuyang-ning-584290208/" target="'_blank" rel="noopener"><i class="fa fa-linkedin-square" id="linkedin"></i></a>
       <h1>World Gross Domestic Product</h1>
     </div>
-    <div id="hover-tooltip"></div>
     <button type="button" id="world-data"> WORLD TREND </button>
-    <button type="button" id="live-world-data"> LIVE DISPLAY </button>
+    <div id="hover-tooltip"></div>
+    
+    <!-- <button type="button" id="instruction"> INSTRUCTION </button> -->
     
     <div id="graphs-container">
       <div class="map" width="800" height="500">
+      
       </div>
 
       <div class="charts">
@@ -42,7 +105,7 @@
           <div id="pic2" width="500" height="300"></div>
       </div>
     </div>
-          
+    <div id="race" width="800" height="500"></div>
   </body>
 
 </html>

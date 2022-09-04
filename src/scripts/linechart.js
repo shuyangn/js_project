@@ -74,7 +74,6 @@ function generateLineChart(draw_data, draw_id) {
   const lineCircles = Array.from(document.getElementsByClassName("lineCircle"));
   lineCircles.forEach(circle => {
       circle.addEventListener('mouseover', e => {
-        debugger
           const tip_year = e.target.__data__.year;
           const tip_value = e.target.__data__.Qty;
           const message = "year: ".concat(tip_year, "<br>" , "Growth rate: " , tip_value.toFixed(2) , " %");

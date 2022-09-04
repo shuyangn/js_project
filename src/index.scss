@@ -1,5 +1,6 @@
-@import url(styles/reset.css);
-@import url(styles/map.scss);
+@import "./styles/reset.css";
+@import "./styles/map.scss";
+@import "./styles/info.scss";
 
 // body {
 //     margin: 0px;
@@ -15,6 +16,7 @@ body {
     align-items: center;
     position: relative;
     background-color: #f7f7f7; 
+    font-family: 'Luckiest Guy';
 }
 
 .bar {
@@ -61,25 +63,40 @@ body {
 }
 #github{
     position:absolute;
-    right: 20px;
+    right: 70px;
     top:10px;
+    box-shadow: none;
+    transition: visibility 150ms, opacity 500ms, box-shadow 200ms ease-out;
 }
 
 #linkedin{
     position:absolute;
-    right: 70px;
+    right: 20px;
     top:10px;
+    box-shadow: none;
+    transition: visibility 150ms, opacity 500ms, box-shadow 200ms ease-out;
+}
+
+
+#info-button{
+    position:absolute;
+    right: 120px;
+    top:10px;
+    box-shadow: none;
+    transition: visibility 150ms, opacity 500ms, box-shadow 200ms ease-out;
 }
 
 #nav-bar i:hover{
-    box-shadow: 0 0 15px #969696;
+    // box-shadow: 0 0 15px #969696;
+    box-shadow: 0 0 10px rgba(200, 200, 200, 1);
 }
 
 h1 {
-    font-size: 36px;
+    font-size: 40px;
     font-weight: 700;
     margin: 5px 0;
     margin-top: 20px;
+    font-family: 'Luckiest Guy';
 }
 
 #hover-tooltip {
@@ -99,13 +116,14 @@ h1 {
 #world-data{
     position: absolute;
     top: 75px;
-    left: 53%;
-    padding: 5px 10px;
+    left: 4%;
+    padding: 10px 20px;
     border-radius: 5px;
     border: none;
     outline: none;
     background-color: rgba(200, 200, 200, .4);
-    font-family: 'Volkhov', serif;
+    font-family: 'Luckiest Guy', serif;
+    font-size: 20px;
     // z-index: 1;
     // opacity: 0;
     // visibility: hidden;
@@ -121,4 +139,9 @@ h1 {
 .lineCircle:hover {
     stroke: white;
     fill: rgb(20, 133, 246);
+}
+
+
+#country-name-text {
+    font-family: 'Luckiest Guy';
 }

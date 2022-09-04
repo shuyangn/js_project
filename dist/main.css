@@ -50,38 +50,113 @@ table {
 	border-spacing: 0;
 }
 
-/*!***************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/map.scss ***!
-  \***************************************************************************************************/
-.country {
-    fill: #7ea2d6;
-    stroke: #C3D6F0;
-    stroke-opacity: 0.3;
-}
-
-.country:hover {
-    fill: #094594;  
-}
-
-.map {
-    display: flex;
-   //justify-content: space-evenly;
-    margin-top: 70px;
-    background-color: white;
-    margin-bottom: 10px;
-    //margin-left: 0px;
-    margin-right:60px;
-}
-
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
+.country {
+  fill: #7ea2d6;
+  stroke: #C3D6F0;
+  stroke-opacity: 0.3;
+}
+
+.country:hover {
+  fill: #094594;
+}
+
+.map {
+  display: flex;
+  margin-top: 70px;
+  background-color: white;
+  margin-bottom: 10px;
+  margin-right: 60px;
+}
+
+.info-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(102, 102, 102, 0.663);
+  justify-content: center;
+  font-family: "Fredoka One", cursive;
+  font-size: 17px;
+}
+
+.close-info {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close-info:hover {
+  cursor: pointer;
+  color: rgb(193, 193, 193);
+}
+
+.info-position {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-modal-content {
+  color: #262624;
+  background-color: rgba(247, 247, 247, 0.831372549);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 700px;
+  min-width: 400px;
+  padding: 10px;
+  border-radius: 15px;
+  margin-bottom: 50px;
+}
+.info-modal-content .title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.info-modal-content div {
+  background-color: rgba(247, 247, 247, 0.9568627451);
+  border-radius: 10px;
+  padding: 10px;
+  color: rgba(47, 39, 97, 0.8196078431);
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  padding: 10px;
+  padding-left: 45px;
+  padding-right: 45px;
+  font-weight: 100;
+}
+.info-modal-content div img {
+  height: 300px;
+  margin-bottom: 30px;
+}
+.info-modal-content h2 {
+  font-size: 20px;
+}
+
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   background-color: #f7f7f7;
+  font-family: "Luckiest Guy";
 }
 
 .bar {
@@ -120,25 +195,38 @@ body {
 
 #github {
   position: absolute;
-  right: 20px;
+  right: 70px;
   top: 10px;
+  box-shadow: none;
+  transition: visibility 150ms, opacity 500ms, box-shadow 200ms ease-out;
 }
 
 #linkedin {
   position: absolute;
-  right: 70px;
+  right: 20px;
   top: 10px;
+  box-shadow: none;
+  transition: visibility 150ms, opacity 500ms, box-shadow 200ms ease-out;
+}
+
+#info-button {
+  position: absolute;
+  right: 120px;
+  top: 10px;
+  box-shadow: none;
+  transition: visibility 150ms, opacity 500ms, box-shadow 200ms ease-out;
 }
 
 #nav-bar i:hover {
-  box-shadow: 0 0 15px #969696;
+  box-shadow: 0 0 10px rgb(200, 200, 200);
 }
 
 h1 {
-  font-size: 36px;
+  font-size: 40px;
   font-weight: 700;
   margin: 5px 0;
   margin-top: 20px;
+  font-family: "Luckiest Guy";
 }
 
 #hover-tooltip {
@@ -156,13 +244,14 @@ h1 {
 #world-data {
   position: absolute;
   top: 75px;
-  left: 53%;
-  padding: 5px 10px;
+  left: 4%;
+  padding: 10px 20px;
   border-radius: 5px;
   border: none;
   outline: none;
   background-color: rgba(200, 200, 200, 0.4);
-  font-family: "Volkhov", serif;
+  font-family: "Luckiest Guy", serif;
+  font-size: 20px;
   box-shadow: none;
   transition: visibility 150ms, opacity 500ms, box-shadow 200ms ease-out;
 }
@@ -175,4 +264,8 @@ h1 {
 .lineCircle:hover {
   stroke: white;
   fill: rgb(20, 133, 246);
+}
+
+#country-name-text {
+  font-family: "Luckiest Guy";
 }
