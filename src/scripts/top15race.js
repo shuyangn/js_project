@@ -10,7 +10,7 @@ function generateTop15Race(data) {
     });
 
     data = d3.group(data, d => d.country)
-    console.log(data)
+    // console.log(data)
 
 }
 
